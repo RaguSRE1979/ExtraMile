@@ -900,8 +900,21 @@
 
     /* ── Mobile Responsive ───────────────────────────────────── */
     @media (max-width: 768px) {
-      nav { padding: 16px 20px; }
-      .nav-links { display: none; position: fixed; inset: 0; background: var(--cream); flex-direction: column; justify-content: center; align-items: center; gap: 32px; z-index: 99; }
+      /* Nav */
+      nav { padding: 14px 18px; }
+      .nav-logo { font-size: 1.3rem; gap: 8px; }
+      .nav-logo-icon { width: 34px; height: 34px; }
+      .nav-links {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: var(--cream);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 32px;
+        z-index: 99;
+      }
       .nav-links.open { display: flex; }
       .nav-links a { font-size: 1.1rem; }
       .nav-cta { padding: 12px 28px !important; font-size: 1rem !important; }
@@ -910,22 +923,60 @@
       .nav-toggle.open span:nth-child(2) { opacity: 0; }
       .nav-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-      #hero { padding: 100px 20px 60px; }
+      /* Sections */
+      section { padding: 60px 18px; }
 
-      .programs-layout { grid-template-columns: 1fr; gap: 32px; }
+      /* Hero */
+      #hero { padding: 100px 18px 56px; }
+      .hero-badge { font-size: 0.72rem; }
+      .hero-sub { font-size: 1rem; }
+      .hero-actions { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-secondary { width: 100%; max-width: 300px; text-align: center; }
+      .hero-trust {
+        gap: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+        max-width: 320px;
+        margin: 48px auto 0;
+        row-gap: 24px;
+      }
+
+      /* Why cards — already auto-fit but force single col on very small */
+      .why-grid { grid-template-columns: 1fr; gap: 16px; margin-top: 36px; }
+
+      /* Programs */
+      .programs-layout { grid-template-columns: 1fr; gap: 28px; }
       .programs-intro { position: static; }
+      .approach-box { margin-top: 20px; }
 
-      .about-layout { grid-template-columns: 1fr; gap: 40px; }
-      .about-photo-wrap { max-width: 320px; margin: 0 auto; }
-      .creds-grid { grid-template-columns: 1fr; }
+      /* About */
+      .about-layout { grid-template-columns: 1fr; gap: 36px; }
+      .about-photo-wrap { max-width: 280px; margin: 0 auto; }
+      .creds-grid { grid-template-columns: 1fr; gap: 10px; }
+      .about-name { font-size: 1.7rem; }
 
-      .contact-layout { grid-template-columns: 1fr; gap: 36px; }
+      /* Testimonials */
+      .testimonials-grid { grid-template-columns: 1fr; gap: 16px; margin-top: 36px; }
 
-      section { padding: 64px 20px; }
+      /* Contact */
+      .contact-layout { grid-template-columns: 1fr; gap: 32px; }
+      .contact-form { padding: 22px 18px; }
 
-      .hero-trust { gap: 24px; }
+      /* Footer */
+      .footer-logo { font-size: 1.3rem; }
 
-      .contact-form { padding: 24px; }
+      /* Floating WA — move up so it doesn't cover form submit */
+      .floating-wa { bottom: 18px; right: 18px; width: 46px; height: 46px; font-size: 1.2rem; }
+    }
+
+    /* Very small screens */
+    @media (max-width: 380px) {
+      .hero-trust { grid-template-columns: 1fr 1fr; max-width: 260px; }
+      .trust-num { font-size: 1.6rem; }
+      .hero-actions .btn-primary, .hero-actions .btn-secondary { max-width: 100%; }
+      .why-card { padding: 24px 20px; }
+      .contact-form { padding: 18px 14px; }
     }
 
     /* Form submission state */
