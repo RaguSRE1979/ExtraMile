@@ -1095,6 +1095,87 @@
       display: block;
     }
 
+    /* Slot picker */
+    .slots-container {
+      margin-top: 16px;
+      border-top: 1px dashed rgba(122, 158, 126, 0.3);
+      padding-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .slot-section-label {
+      font-size: 0.74rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--sage);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .slot-section-label::before { content: '↳'; opacity: 0.6; }
+
+    .slot-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .slot-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--cream-dark);
+      border: 1.5px solid rgba(122, 158, 126, 0.25);
+      border-radius: 40px;
+      padding: 7px 14px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      color: var(--warm-mid);
+      font-weight: 500;
+      transition: border-color 0.2s, background 0.2s, color 0.2s;
+      user-select: none;
+    }
+    .slot-pill input[type="radio"] { display: none; }
+    .slot-pill:has(input:checked) {
+      background: rgba(122, 158, 126, 0.12);
+      border-color: var(--sage);
+      color: var(--sage);
+      font-weight: 600;
+    }
+    .slot-time {
+      font-size: 0.78rem;
+      opacity: 0.72;
+    }
+
+    .slot-confirmed {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(122, 158, 126, 0.12);
+      border: 1.5px solid var(--sage);
+      border-radius: 40px;
+      padding: 7px 14px;
+      font-size: 0.85rem;
+      color: var(--sage);
+      font-weight: 600;
+    }
+    .conf-check {
+      width: 16px;
+      height: 16px;
+      background: var(--sage);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 0.6rem;
+      flex-shrink: 0;
+    }
+
     @media (max-width: 768px) {
       .reg-form-card { padding: 22px 16px; }
       .form-row { grid-template-columns: 1fr; gap: 0; }
@@ -1514,6 +1595,63 @@
                   <span>Fun Friday</span>
                 </label>
               </div>
+
+              <!-- Slot picker — shown per subject -->
+              <div class="slots-container" id="slotsContainer" style="display:none;">
+
+                <div class="slot-section" id="slot-Math" style="display:none;">
+                  <div class="slot-section-label">Math — choose a day</div>
+                  <div class="slot-group">
+                    <label class="slot-pill">
+                      <input type="radio" name="slot_math" value="Tuesday (5:00–6:00 PM)" />
+                      <span>Tuesday</span><span class="slot-time">5:00–6:00 PM</span>
+                    </label>
+                    <label class="slot-pill">
+                      <input type="radio" name="slot_math" value="Wednesday (5:00–6:00 PM)" />
+                      <span>Wednesday</span><span class="slot-time">5:00–6:00 PM</span>
+                    </label>
+                    <label class="slot-pill">
+                      <input type="radio" name="slot_math" value="Thursday (5:00–6:00 PM)" />
+                      <span>Thursday</span><span class="slot-time">5:00–6:00 PM</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="slot-section" id="slot-Reading" style="display:none;">
+                  <div class="slot-section-label">Reading — choose a day</div>
+                  <div class="slot-group">
+                    <label class="slot-pill">
+                      <input type="radio" name="slot_reading" value="Tuesday (5:00–6:00 PM)" />
+                      <span>Tuesday</span><span class="slot-time">5:00–6:00 PM</span>
+                    </label>
+                    <label class="slot-pill">
+                      <input type="radio" name="slot_reading" value="Wednesday (5:00–6:00 PM)" />
+                      <span>Wednesday</span><span class="slot-time">5:00–6:00 PM</span>
+                    </label>
+                    <label class="slot-pill">
+                      <input type="radio" name="slot_reading" value="Thursday (5:00–6:00 PM)" />
+                      <span>Thursday</span><span class="slot-time">5:00–6:00 PM</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="slot-section" id="slot-Literacy-Club" style="display:none;">
+                  <div class="slot-section-label">Literacy Club</div>
+                  <div class="slot-confirmed">
+                    <span class="conf-check">✓</span>
+                    Monday · 5:00–6:00 PM
+                  </div>
+                </div>
+
+                <div class="slot-section" id="slot-Fun-Friday" style="display:none;">
+                  <div class="slot-section-label">Fun Friday Activities</div>
+                  <div class="slot-confirmed">
+                    <span class="conf-check">✓</span>
+                    Friday · 5:00–6:30 PM
+                  </div>
+                </div>
+
+              </div>
             </div>
           </div>
 
@@ -1616,6 +1754,27 @@
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+    // Subject checkboxes → show/hide slot pickers
+    document.querySelectorAll('#subjectGroup input[type="checkbox"]').forEach(cb => {
+      cb.addEventListener('change', updateSlots);
+    });
+
+    function updateSlots() {
+      const checked = [...document.querySelectorAll('#subjectGroup input:checked')].map(i => i.value);
+      const container = document.getElementById('slotsContainer');
+      container.style.display = checked.length ? 'flex' : 'none';
+      const map = {
+        'Math': 'slot-Math',
+        'Reading': 'slot-Reading',
+        'Literacy Club': 'slot-Literacy-Club',
+        'Fun Friday': 'slot-Fun-Friday'
+      };
+      Object.entries(map).forEach(([subject, id]) => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = checked.includes(subject) ? 'block' : 'none';
+      });
+    }
+
     // Trigger hero reveals immediately
     setTimeout(() => {
       document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('visible'));
@@ -1664,13 +1823,40 @@
     async function handleRegister(e) {
       e.preventDefault();
       const btn = document.getElementById('regSubmitBtn');
+
+      const checked = [...document.querySelectorAll('#subjectGroup input:checked')].map(i => i.value);
+
+      // Validate slot selection for subjects with multiple options
+      for (const subject of ['Math', 'Reading']) {
+        if (checked.includes(subject)) {
+          const key = 'slot_' + subject.toLowerCase();
+          if (!document.querySelector(`input[name="${key}"]:checked`)) {
+            alert(`Please choose a day for ${subject}.`);
+            return;
+          }
+        }
+      }
+
       btn.textContent = 'Submitting…';
       btn.disabled = true;
 
-      const checked = [...document.querySelectorAll('#subjectGroup input:checked')].map(i => i.value);
+      // Build schedule summary
+      const schedule = [];
+      if (checked.includes('Math')) {
+        const s = document.querySelector('input[name="slot_math"]:checked');
+        if (s) schedule.push('Math: ' + s.value);
+      }
+      if (checked.includes('Reading')) {
+        const s = document.querySelector('input[name="slot_reading"]:checked');
+        if (s) schedule.push('Reading: ' + s.value);
+      }
+      if (checked.includes('Literacy Club')) schedule.push('Literacy Club: Monday (5:00–6:00 PM)');
+      if (checked.includes('Fun Friday')) schedule.push('Fun Friday: Friday (5:00–6:30 PM)');
+
       const formData = new FormData(e.target);
-      const data = Object.fromEntries([...formData.entries()].filter(([k]) => k !== 'subjects'));
+      const data = Object.fromEntries([...formData.entries()].filter(([k]) => k !== 'subjects' && !k.startsWith('slot_')));
       data.subjects = checked.length ? checked.join(', ') : 'None selected';
+      data.schedule = schedule.length ? schedule.join(' | ') : 'Not specified';
 
       try {
         const res = await fetch('https://api.web3forms.com/submit', {
