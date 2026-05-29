@@ -388,6 +388,14 @@
     .why-icon.sage  { background: rgba(122, 158, 126, 0.2); }
     .why-icon.gold  { background: rgba(212, 168, 83, 0.2); }
 
+    .why-card-img {
+      width: 100%;
+      height: 175px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 18px;
+    }
+
     .why-card h3 {
       font-family: var(--font-display);
       font-size: 1.25rem;
@@ -1205,20 +1213,10 @@
   <!-- Nav -->
   <nav id="nav">
     <a class="nav-logo" href="#hero">
-      <svg class="nav-logo-icon" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Circular badge background -->
-        <circle cx="21" cy="21" r="20" fill="#fdf6ee" stroke="#c4603a" stroke-width="1.5"/>
-        <!-- Leaf / sprout shape — Montessori nature feel -->
-        <path d="M21 32 C21 32 12 26 12 18 C12 13 16 9 21 9 C26 9 30 13 30 18 C30 26 21 32 21 32Z" fill="#7a9e7e" opacity="0.85"/>
-        <!-- Center vein -->
-        <line x1="21" y1="32" x2="21" y2="14" stroke="#fdf6ee" stroke-width="1.2" stroke-linecap="round"/>
-        <!-- Left vein -->
-        <line x1="21" y1="21" x2="15" y2="17" stroke="#fdf6ee" stroke-width="0.9" stroke-linecap="round" opacity="0.7"/>
-        <!-- Right vein -->
-        <line x1="21" y1="21" x2="27" y2="17" stroke="#fdf6ee" stroke-width="0.9" stroke-linecap="round" opacity="0.7"/>
-        <!-- Small star / sparkle at top -->
-        <circle cx="21" cy="10" r="1.5" fill="#d4a853"/>
-      </svg>
+      <div class="nav-logo-icon" style="position:relative;flex-shrink:0;">
+        <img src="runningimage.jpg" style="width:100%;height:100%;object-fit:contain;border-radius:50%;border:1.5px solid #c4603a;background:#fdf6ee;padding:3px;display:block;" alt="Extra Mile" />
+        <span style="position:absolute;top:-1px;right:-1px;width:16px;height:16px;background:#d4a853;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:0.75rem;line-height:1;border:2px solid #fdf6ee;">+</span>
+      </div>
       Extra <span>Mile</span>
     </a>
     <ul class="nav-links" id="navLinks">
@@ -1282,17 +1280,17 @@
       </p>
       <div class="why-grid">
         <div class="why-card reveal reveal-delay-1">
-          <div class="why-icon terra">🎯</div>
+          <img class="why-card-img" src="https://images.unsplash.com/photo-1583468982228-19f19164aee2?w=600&h=350&fit=crop&q=80" alt="Happy child learning with teacher" onerror="this.style.display='none'" />
           <h3>Every Child Gets Individual Attention</h3>
           <p>No child gets lost in the group. Sessions are designed so your child receives focused, personal guidance — whether one-on-one or in a small group. Your child is never just another student.</p>
         </div>
         <div class="why-card reveal reveal-delay-2">
-          <div class="why-icon sage">🌱</div>
+          <img class="why-card-img" src="HappyChild.png" alt="Happy child holding colorful flowers" />
           <h3>Montessori-Inspired Learning</h3>
           <p>Learning is hands-on, child-led, and built on curiosity. We follow Montessori principles that let children discover concepts at their own pace instead of racing to keep up with a rigid curriculum.</p>
         </div>
         <div class="why-card reveal reveal-delay-3">
-          <div class="why-icon gold">🎓</div>
+          <img class="why-card-img" src="https://images.unsplash.com/photo-1634128221889-82ed6efebfc3?w=600&h=350&fit=crop&q=80" alt="Colorful numbers and math" onerror="this.style.display='none'" />
           <h3>An Expert Who Actually Loves Math</h3>
           <p>Viji holds a Master's degree in Mathematics alongside her Montessori teaching credentials. She doesn't just know how to teach — she genuinely loves the subject and brings that energy to every session.</p>
         </div>
@@ -1426,33 +1424,32 @@
         <div class="testimonial-card reveal reveal-delay-1">
           <div class="quote-mark">"</div>
           <p class="testimonial-text">
-            [Parent testimonial] My daughter was really struggling with fractions and dreading math class. After just a few sessions with Viji, her confidence completely changed. She actually asks to do math now. I didn't think that was possible.
+            Thank you so much for helping J.S. grow, learn, and excel. You have been an integral part of his foundation. There are few people who are truly living their calling — and you are one of them. I cannot thank you enough for all you have done and for keeping him safe.
           </p>
           <div class="testimonial-author">
             <div class="author-avatar">👩</div>
             <div>
-              <div class="author-name">Parent — Voorhees, NJ</div>
-              <div class="author-note">Child, age 9</div>
+              <div class="author-name">Keith & Family</div>
+              <div class="author-note">Parent of a student</div>
             </div>
           </div>
         </div>
         <div class="testimonial-card reveal reveal-delay-2">
           <div class="quote-mark">"</div>
           <p class="testimonial-text">
-            [Parent testimonial] What sets Viji apart is that she actually gets to know your child. She figured out how my son learns best within the first session and adapted everything around that. He went from failing math tests to being one of the top students in his class.
+            Thank you for all that you do! You are so appreciated for all the love and dedication you put into teaching. Roenyk loves you so much. Thank you for being part of our lives — continue to do what you do best. We love you!
           </p>
           <div class="testimonial-author">
-            <div class="author-avatar">👨</div>
+            <div class="author-avatar">👨‍👩‍👧</div>
             <div>
-              <div class="author-name">Parent — Cherry Hill, NJ</div>
-              <div class="author-note">Child, age 11</div>
+              <div class="author-name">Roenyk Rana + Family</div>
             </div>
           </div>
         </div>
         <div class="testimonial-card reveal reveal-delay-3">
           <div class="quote-mark">"</div>
           <p class="testimonial-text">
-            [Parent testimonial] I've tried two other tutors before Extra Mile. Neither of them could reach my son the way Viji does. She has a gift for breaking down concepts in a way that actually makes sense to him. Worth every penny.
+            Viji has a rare gift — she genuinely loves what she does and it shows in every session. My son went from dreading math to asking for extra practice. The personalized attention she gives every child is unlike anything we've experienced before.
           </p>
           <div class="testimonial-author">
             <div class="author-avatar">👩</div>
@@ -1720,14 +1717,10 @@
   <!-- Footer -->
   <footer>
     <div class="footer-logo" style="display:flex;align-items:center;justify-content:center;gap:10px;">
-      <svg width="38" height="38" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="21" cy="21" r="20" fill="rgba(255,255,255,0.08)" stroke="#c4603a" stroke-width="1.5"/>
-        <path d="M21 32 C21 32 12 26 12 18 C12 13 16 9 21 9 C26 9 30 13 30 18 C30 26 21 32 21 32Z" fill="#7a9e7e" opacity="0.9"/>
-        <line x1="21" y1="32" x2="21" y2="14" stroke="#fdf6ee" stroke-width="1.2" stroke-linecap="round"/>
-        <line x1="21" y1="21" x2="15" y2="17" stroke="#fdf6ee" stroke-width="0.9" stroke-linecap="round" opacity="0.7"/>
-        <line x1="21" y1="21" x2="27" y2="17" stroke="#fdf6ee" stroke-width="0.9" stroke-linecap="round" opacity="0.7"/>
-        <circle cx="21" cy="10" r="1.5" fill="#d4a853"/>
-      </svg>
+      <div style="position:relative;width:38px;height:38px;flex-shrink:0;">
+        <img src="runningimage.jpg" style="width:38px;height:38px;object-fit:contain;border-radius:50%;border:1.5px solid #c4603a;background:#fdf6ee;padding:2px;display:block;" alt="Extra Mile" />
+        <span style="position:absolute;top:-1px;right:-1px;width:15px;height:15px;background:#d4a853;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:0.7rem;line-height:1;border:2px solid #2c2417;">+</span>
+      </div>
       Extra <span>Mile</span>
     </div>
     <div class="footer-tagline">Montessori-inspired math tutoring · Voorhees, NJ</div>
